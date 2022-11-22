@@ -10,9 +10,9 @@ export type PostType = {
 const MyPosts = () => {
     return (
         <div>
-            My posts
+
             <div>
-                New posts
+                My posts
             </div>
             <Posts messages='Hello' likesCount={0}/>
             <Posts messages='Hi' likesCount={15}/>
