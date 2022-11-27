@@ -1,5 +1,6 @@
 import React from "react";
-import classes from "./MainContent.module.css";
+import { v1 } from "uuid";
+import s from './MyPosts.module.css'
 import Posts from "./posts/Posts";
 
 export type PostType = {
@@ -7,15 +8,25 @@ export type PostType = {
     likesCount: number
 }
 
+const dataPosts = [
+    {id:v1(), messages:'Hello My', likesCount: 4},
+    {id:v1(), messages:'Hello My', likesCount: 4},
+    {id:v1(), messages:'Hello My', likesCount: 4},
+]
+
+const postsCreate = dataPosts.map(t=> <Posts messages={t.messages} likesCount={t.likesCount} />)
+
+
+
 const MyPosts = () => {
     return (
-        <div>
-
+        <div className={s.myPost} >
             <div>
-                My posts
+                <h3>My post</h3>
+                <textarea/>
+                <button>Add</button>
             </div>
-            <Posts messages='Hello' likesCount={0}/>
-            <Posts messages='Hi' likesCount={15}/>
+            {postsCreate}
         </div>
 
     )
