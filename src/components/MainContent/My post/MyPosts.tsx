@@ -2,23 +2,10 @@ import React from "react";
 import { v1 } from "uuid";
 import s from './MyPosts.module.css'
 import Posts from "./posts/Posts";
+import {ContentType} from "../Content";
 
-export type PostType = {
-    messages: string,
-    likesCount: number
-}
-
-const dataPosts = [
-    {id:v1(), messages:'Hello My', likesCount: 4},
-    {id:v1(), messages:'Hello My', likesCount: 4},
-    {id:v1(), messages:'Hello My', likesCount: 4},
-]
-
-const postsCreate = dataPosts.map(t=> <Posts messages={t.messages} likesCount={t.likesCount} />)
-
-
-
-const MyPosts = () => {
+const MyPosts = (props:ContentType) => {
+    const postsCreate = props.dataPosts.map(t=> <Posts messages={t.messages} likesCount={t.likesCount} id={t.id} />)
     return (
         <div className={s.myPost} >
             <div>
@@ -28,7 +15,6 @@ const MyPosts = () => {
             </div>
             {postsCreate}
         </div>
-
     )
 }
 export default MyPosts

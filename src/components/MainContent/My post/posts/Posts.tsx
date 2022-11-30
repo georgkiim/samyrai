@@ -1,8 +1,9 @@
 import React from "react";
 import classes from "./Posts.module.css";
-import {PostType} from "../MyPosts";
+
 
 type PostsPropsType = {
+    id:string
     messages: string,
     likesCount: number
 }
