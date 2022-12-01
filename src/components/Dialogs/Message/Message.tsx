@@ -1,6 +1,7 @@
-import {MessageType} from "../../../index";
+
 import s from "../Dialogs.module.css";
 import React from "react";
+import {MessageType} from "../../../redux/state";
 
 
 

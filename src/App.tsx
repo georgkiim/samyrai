@@ -9,15 +9,14 @@ import {BrowserRouter, Route} from "react-router-dom";
 import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
 import Music from "./components/music/Music";
-import { MessageType, PostType, UsersType} from "./index";
 
-type PropsType = {
-    dataPosts: Array<PostType>
-    users: UsersType[]
-    messages:MessageType[]
+import state, {RootStateType} from "./redux/state";
+
+type AppProps={
+    appState: RootStateType
 }
 
-const App = (props: PropsType) => {
+const App = (props: AppProps ) => {
     return (
         <BrowserRouter>
             <div className='app-wrapper'>
@@ -25,8 +24,8 @@ const App = (props: PropsType) => {
                 <Nav/>
                 {/*<NewPost />*/}
                 <div className='app-wrapper-content'>
-                    <Route path='/profile' render={() => <Content dataPosts={props.dataPosts} />}/>
-                    <Route path='/dialogs' render={() => <Dialogs users={props.users} messages={props.messages}/>}/>
+                    <Route path='/profile' render={() => <Content dataPosts={props.appState.mainContentPage.dataPosts} />}/>
+                    <Route path='/dialogs' render={() => <Dialogs users={props.appState.dialogsPage.users} messages={props.appState.dialogsPage.messages}/>}/>
                     <Route path='/news' render={() => <News/>}/>
                     <Route path='/settings' render={() => <Settings/>}/>
                     <Route path='/music' render={() => <Music/>}/>
