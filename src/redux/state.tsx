@@ -1,28 +1,29 @@
 import {v1} from "uuid";
+import {render} from "../render";
 
 
 export type PostType = {
-    id:string
+    id: string
     messages: string,
     likesCount: number
 }
-export type UsersType={
+export type UsersType = {
     id: string
     name: string
 }
 
 export type MessageType = {
     id: string
-    message:string
+    message: string
 }
 
 export type MainContentPageType = {
-    dataPosts:PostType[]
+    dataPosts: PostType[]
 }
 
-export type DialogPageType={
+export type DialogPageType = {
     users: UsersType[]
-    messages:MessageType[]
+    messages: MessageType[]
 }
 
 export type RootStateType = {
@@ -51,6 +52,14 @@ const state: RootStateType = {
             {id: v1(), message: "MPTHER!"},
         ]
     }
+}
+
+ export const addPost = (messages:string) => {
+    const newPost:PostType = {
+        id: v1(), messages, likesCount:1
+    }
+   state.mainContentPage.dataPosts.push(newPost)
+     render(state)
 
 }
 export default state
