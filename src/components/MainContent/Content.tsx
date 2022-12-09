@@ -8,14 +8,16 @@ import {addPost, MainContentPageType, PostType} from "../../redux/state";
 
  export type ContentType = {
     dataPosts: Array<PostType>
-    addPost:(messages:string)=>void
+    addPost:()=>void
+    newPost:string
+    newPostText:(title:string)=>void
 }
 
 const Content = (props:ContentType) => {
     return (
         <div >
             <ProfileDescription />
-            <MyPosts dataPosts={props.dataPosts} addPost={props.addPost}/>
+            <MyPosts dataPosts={props.dataPosts} addPost={props.addPost} newPost={props.newPost} newPostText={props.newPostText}/>
         </div>
     )
 }

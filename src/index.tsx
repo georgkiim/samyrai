@@ -1,11 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import {v1} from "uuid";
-import state, {addPost, RootStateType} from "./redux/state";
-import {render} from "./render";
+import state, {addPost, RootStateType, newPostText, observer} from "./redux/state";
+import ReactDOM from "react-dom";
+import App from "./App";
+import React from "react";
 
-
-
+ const render =(state:RootStateType)=>{
+    ReactDOM.render(
+        <App appState={state}
+             addPost={addPost}
+             newPostText={newPostText}   />,
+        document.getElementById('root')
+    )}
 render(state)
+observer(render)

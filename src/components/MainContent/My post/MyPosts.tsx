@@ -1,4 +1,5 @@
-import React from "react";
+import React, {ChangeEvent} from "react";
+import {MouseEventHandler} from "react";
 import { v1 } from "uuid";
 import s from './MyPosts.module.css'
 import Posts from "./posts/Posts";
@@ -9,7 +10,12 @@ const MyPosts = (props:ContentType) => {
     const postsCreate = props.dataPosts.map(t=> <Posts messages={t.messages} likesCount={t.likesCount} id={t.id} />)
     const textRef  = React.createRef<HTMLTextAreaElement>()
     const addNewPost =() =>{
-        props.addPost(textRef.current? textRef.current.value:'')
+        props.addPost()
+        props.newPostText('')
+    }
+
+    const onClickHandler=(e:ChangeEvent<HTMLTextAreaElement>)=>{
+     props.newPostText(textRef.current?textRef.current.value:"")
     }
 
 
@@ -17,7 +23,7 @@ const MyPosts = (props:ContentType) => {
         <div className={s.myPost} >
             <div>
                 <h3>My post</h3>
-                <textarea ref={textRef} ></textarea>
+                <textarea onChange={onClickHandler} value={props.newPost} ref={textRef}/>
                 <button onClick={addNewPost}>Add</button>
             </div>
             {postsCreate}
