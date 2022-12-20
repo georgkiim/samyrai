@@ -1,7 +1,10 @@
 import {v1} from "uuid";
 
-let render = (state:RootStateType) =>{
+let render = () => {
     console.log('ha')
+}
+export const observer = (callback: () => void) => {
+    render = callback
 }
 
 export type PostType = {
@@ -21,7 +24,7 @@ export type MessageType = {
 
 export type MainContentPageType = {
     dataPosts: PostType[]
-    newPost:string
+    newPost: string
 }
 
 export type DialogPageType = {
@@ -41,7 +44,7 @@ const state: RootStateType = {
             {id: v1(), messages: 'Hello My', likesCount: 4},
             {id: v1(), messages: 'Hello My', likesCount: 4},
         ],
-        newPost:'Hellp'
+        newPost: 'Hellp'
     },
     dialogsPage: {
         users: [
@@ -58,21 +61,17 @@ const state: RootStateType = {
     }
 }
 
- export const addPost = () => {
-    const newPost:PostType = {
-        id: v1(), messages: state.mainContentPage.newPost, likesCount:1
+export const addPost = () => {
+    const newPost: PostType = {
+        id: v1(), messages: state.mainContentPage.newPost, likesCount: 1
     }
-   state.mainContentPage.dataPosts.push(newPost)
-     render(state)
+    state.mainContentPage.dataPosts.push(newPost)
+    render()
 
 }
-export const newPostText = (title:string) => {
+export const newPostText = (title: string) => {
     state.mainContentPage.newPost = title
-    render(state)
-}
-
-export const observer =(observer:(state:RootStateType)=>void)=>{
-    render=observer
+    render()
 }
 
 

@@ -4,12 +4,13 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import React from "react";
 
- const render =(state:RootStateType)=>{
+const render = () => {
     ReactDOM.render(
         <App appState={state}
              addPost={addPost}
-             newPostText={newPostText}   />,
+             newPostText={newPostText}/>,
         document.getElementById('root')
-    )}
-render(state)
+    )
+}
+render()
 observer(render)
