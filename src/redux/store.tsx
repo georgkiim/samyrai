@@ -1,6 +1,6 @@
 import {v1} from "uuid";
-import {reducerMainContentPage} from "./redusers/reduserMainContentPage";
-import {reducerDialogsPage} from "./redusers/reduserDialogsPage";
+import {AddPostAction, NewTextAction, reducerMainContentPage} from "./redusers/reduserMainContentPage";
+import {AddMessageAction, NewMessageType, reducerDialogsPage} from "./redusers/reduserDialogsPage";
 
 export type PostType = {
     id: string
@@ -36,22 +36,7 @@ export type StoreType = {
     dispatch: (action: ActionType) => void
 }
 
-export type AddPostAction = {
-    type: 'ADD-POST'
-}
-export type NewTextAction = {
-    type: 'NEW-TEXT'
-    title: string
-}
-export type AddMessageAction = {
-    type: 'ADD-MESSAGE'
-}
-export type NewMessageType = {
-    type: 'NEW-MESSAGE'
-    message: string
-}
-
-export type ActionType = AddPostAction | NewTextAction | AddMessageAction | NewMessageType
+export type ActionType = AddPostAction | AddMessageAction | NewMessageType | NewTextAction
 
 export const store: StoreType = {
     _state: {

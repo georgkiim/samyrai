@@ -1,8 +1,13 @@
 import {v1} from "uuid";
-import {ActionType, AddPostAction, MainContentPageType, NewTextAction, PostType} from "../state";
+import {ActionType, MainContentPageType, PostType} from "../store";
 
-export const addPostAction = (): AddPostAction => ({type: 'ADD-POST'})
-export const newPostAction = (title: string): NewTextAction => ({type: 'NEW-TEXT', title})
+
+export type AddPostAction = ReturnType<typeof addPostAction>
+export type NewTextAction = ReturnType<typeof newPostAction>
+
+
+export const addPostAction = () => ({type: 'ADD-POST'}as const)
+export const newPostAction = (title: string) => ({type: 'NEW-TEXT', title}as const)
 
 export const reducerMainContentPage = (state: MainContentPageType, action: ActionType) => {
     switch (action.type) {
@@ -16,7 +21,8 @@ export const reducerMainContentPage = (state: MainContentPageType, action: Actio
         case "NEW-TEXT":
             state.newPost = action.title;
             return state
-        default: return state
+        default:
+            return state
     }
 
 }

@@ -1,15 +1,20 @@
 import {
     ActionType,
-    AddMessageAction,
+
     DialogPageType,
     MainContentPageType,
     MessageType,
-    NewMessageType,
+
     PostType
-} from "../state";
+} from "../store";
 import {v1} from "uuid";
-export const addMessageAction = (): AddMessageAction => ({type: 'ADD-MESSAGE'})
-export const newMessageAction = (message: string): NewMessageType => ({type: 'NEW-MESSAGE', message})
+
+export type AddMessageAction =  ReturnType<typeof addMessageAction>
+export type NewMessageType = ReturnType<typeof newMessageAction>
+
+
+export const addMessageAction = () => ({type: 'ADD-MESSAGE'}as const)
+export const newMessageAction = (message: string) => ({type: 'NEW-MESSAGE', message}as const)
 
 export const reducerDialogsPage = (state: DialogPageType, action: ActionType) => {
     switch (action.type){

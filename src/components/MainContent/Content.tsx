@@ -1,7 +1,7 @@
 import React from "react";
 import MyPosts from "./My post/MyPosts";
 import ProfileDescription from "./ProfileDescription/ProfileDescription";
-import {ActionType, PostType} from "../../redux/state";
+import {ActionType, PostType} from "../../redux/store";
 
 export type ContentType = {
     dataPosts: Array<PostType>

@@ -5,7 +5,7 @@ import s from './Dialogs.module.css'
 import Message from "./Message/Message";
 import DialogItems from "./DialogsItem/DialogItem";
 import { addMessageAction,  newMessageAction} from "../../redux/redusers/reduserDialogsPage";
-import {ActionType, DialogPageType} from "../../redux/state";
+import {ActionType, DialogPageType} from "../../redux/store";
 type DialogsPropsType = DialogPageType & {
     dispatch: (action: ActionType) => void
 }
