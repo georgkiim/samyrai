@@ -11,10 +11,12 @@ import Settings from "./components/Settings/Settings";
 import Music from "./components/music/Music";
 
 import {ActionType, RootStateType} from "./redux/store";
+import {AppRooType, StoreType} from "./redux/redax-store";
 
 type AppProps = {
-    appState: RootStateType
-    dispatch: (action: ActionType) => void
+    // appState: AppRooType
+    // dispatch: (action: ActionType) => void
+    store:StoreType
 }
 
 const App = (props: AppProps) => {

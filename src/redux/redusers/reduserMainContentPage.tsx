@@ -6,10 +6,18 @@ export type AddPostAction = ReturnType<typeof addPostAction>
 export type NewTextAction = ReturnType<typeof newPostAction>
 
 
-export const addPostAction = () => ({type: 'ADD-POST'}as const)
-export const newPostAction = (title: string) => ({type: 'NEW-TEXT', title}as const)
+export const addPostAction = () => ({type: 'ADD-POST'} as const)
+export const newPostAction = (title: string) => ({type: 'NEW-TEXT', title} as const)
+const initialState = {
+    dataPosts: [
+        {id: v1(), messages: 'Hello My', likesCount: 4},
+        {id: v1(), messages: 'Hello My', likesCount: 4},
+        {id: v1(), messages: 'Hello My', likesCount: 4},
+    ],
+    newPost: 'Hellp'
+}
 
-export const reducerMainContentPage = (state: MainContentPageType, action: ActionType) => {
+export const reducerMainContentPage = (state: MainContentPageType = initialState, action: ActionType) => {
     switch (action.type) {
         case "ADD-POST":
             const newPost: PostType = {

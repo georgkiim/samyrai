@@ -32,7 +32,7 @@ export type StoreType = {
     _state: RootStateType
     getState: () => RootStateType
     render: () => void
-    observer: (callback: () => void) => void
+    subscriber: (callback: () => void) => void
     dispatch: (action: ActionType) => void
 }
 
@@ -69,7 +69,7 @@ export const store: StoreType = {
     render() {
         console.log('ha')
     },
-    observer(callback: () => void) {
+    subscriber(callback: () => void) {
         this.render = callback
     },
     dispatch(action) {
