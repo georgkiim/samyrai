@@ -12,6 +12,7 @@ import Music from "./components/music/Music";
 
 import {ActionType, RootStateType} from "./redux/store";
 import {AppRooType, StoreType} from "./redux/redax-store";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 type AppProps = {
     // appState: AppRooType
@@ -27,15 +28,10 @@ const App = (props: AppProps) => {
                 <Nav/>
                 {/*<NewPost />*/}
                 <div className='app-wrapper-content'>
-                    <Route path='/profile' render={() => <Content dataPosts={props.appState.mainContentPage.dataPosts}
-                                                                  dispatch={props.dispatch}
-                                                                  newPost={props.appState.mainContentPage.newPost}
+                    <Route path='/profile' render={() => <Content store={props.store}
                     />}/>
                     <Route path='/dialogs' render={() =>
-                        <Dialogs users={props.appState.dialogsPage.users}
-                                 messages={props.appState.dialogsPage.messages}
-                                 dispatch={props.dispatch}
-                                 newMessage={props.appState.dialogsPage.newMessage}
+                        <DialogsContainer store={props.store}
 
                         />}/>
                     <Route path='/news' render={() => <News/>}/>

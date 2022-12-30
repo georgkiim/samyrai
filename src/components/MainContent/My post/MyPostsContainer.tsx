@@ -3,26 +3,21 @@ import s from './MyPosts.module.css'
 import Posts from "./posts/Posts";
 import {ContentType} from "../Content";
 import {addPostAction, newPostAction} from "../../../redux/redusers/reduserMainContentPage";
+import MyPosts from "./MyPosts";
 
-const MyPosts = (props: ContentType) => {
-    const postsCreate = props.dataPosts.map(t => <Posts messages={t.messages} likesCount={t.likesCount} id={t.id}/>)
-    const textRef = React.createRef<HTMLTextAreaElement>()
+const MyPostsContainer = (props: ContentType) => {
+    const state = props.store.getState()
+    const dataPosts = state.mainContentPage.dataPosts
+    const newPost = state.mainContentPage.newPost
     const addNewPost = () => {
-        props.dispatch(addPostAction())
-        props.dispatch(newPostAction(''))
+        props.store.dispatch(addPostAction())
+        props.store.dispatch(newPostAction(''))
     }
-    const onClickHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.dispatch(newPostAction(textRef.current ? textRef.current.value : ""))
+    const onClickHandler = (title:string) => {
+        props.store.dispatch(newPostAction(title))
     }
     return (
-        <div className={s.myPost}>
-            <div>
-                <h3>My post</h3>
-                <textarea  onChange={onClickHandler} value={props.newPost} ref={textRef}/>
-                <button onClick={addNewPost}>Add</button>
-            </div>
-            {postsCreate}
-        </div>
+        <MyPosts addNewPost={addNewPost} onClickHandler={onClickHandler} dataPosts={dataPosts} newPost={newPost}/>
     )
 }
-export default MyPosts
+export default MyPostsContainer
