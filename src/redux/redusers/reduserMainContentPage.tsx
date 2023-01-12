@@ -19,16 +19,24 @@ const initialState = {
 
 export const reducerMainContentPage = (state: MainContentPageType = initialState, action: ActionType) => {
     switch (action.type) {
-        case "ADD-POST":
+        case "ADD-POST":{
             const newPost: PostType = {
                 id: v1(), messages: state.newPost, likesCount: 1
             }
-            state.dataPosts.push(newPost)
-            state.newPost = "";
-            return state
-        case "NEW-TEXT":
+            let newState = {
+                ...state,
+                dataPosts: [...state.dataPosts, newPost],
+                newPost: ''
+            }
+            return newState}
+        case "NEW-TEXT":{
             state.newPost = action.title;
-            return state
+            let newState = {
+                ...state, newPost:action.title
+            }
+            return newState
+        }
+
         default:
             return state
     }
