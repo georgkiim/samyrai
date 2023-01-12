@@ -8,11 +8,11 @@ import MyPostsContainer from "./My post/MyPostsContainer";
 export type ContentType = {
     store:StoreType
 }
-const Content = (props: ContentType) => {
+const Content = () => {
     return (
         <div>
             <ProfileDescription/>
-            <MyPostsContainer store={props.store} />
+            <MyPostsContainer />
         </div>
     )
 }

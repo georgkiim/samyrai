@@ -14,24 +14,25 @@ import {ActionType, RootStateType} from "./redux/store";
 import {AppRooType, StoreType} from "./redux/redax-store";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
-type AppProps = {
-    // appState: AppRooType
-    // dispatch: (action: ActionType) => void
-    store:StoreType
-}
+// type AppProps = {
+//     // appState: AppRooType
+//     // dispatch: (action: ActionType) => void
+//     store:StoreType
+// }
 
-const App = (props: AppProps) => {
+const App = () => {
     return (
-        <BrowserRouter>
+
             <div className='app-wrapper'>
                 <Header/>
                 <Nav/>
                 {/*<NewPost />*/}
                 <div className='app-wrapper-content'>
-                    <Route path='/profile' render={() => <Content store={props.store}
+                    <Route path='/profile' render={() => <Content
                     />}/>
                     <Route path='/dialogs' render={() =>
-                        <DialogsContainer store={props.store}
+                        <DialogsContainer
+                            // store={props.store}
 
                         />}/>
                     <Route path='/news' render={() => <News/>}/>
@@ -41,7 +42,7 @@ const App = (props: AppProps) => {
                 </div>
 
             </div>
-        </BrowserRouter>
+
     )
 }
 
