@@ -14,6 +14,7 @@ import {ActionType, RootStateType} from "./redux/store";
 import {AppRooType, StoreType} from "./redux/redax-store";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import Users from './components/Users/Users';
+import UsersContainer from "./components/Users/UsersContainer";
 
 // type AppProps = {
 //     // appState: AppRooType
@@ -31,7 +32,7 @@ const App = () => {
             <div className='app-wrapper-content'>
                 <Route path='/profile' render={() => <Content/>}/>
                 <Route path='/dialogs' render={() => <DialogsContainer/>}/>
-                <Route path='/dialogs' render={() => <Users/>}/>
+                <Route path='/users' render={() => <UsersContainer/>}/>
                 <Route path='/news' render={() => <News/>}/>
                 <Route path='/settings' render={() => <Settings/>}/>
                 <Route path='/music' render={() => <Music/>}/>
