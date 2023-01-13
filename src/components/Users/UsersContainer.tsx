@@ -4,6 +4,7 @@ import {AppRooType} from "../../redux/redax-store";
 import {Dispatch} from "redux";
 import {followAc, setUserAc, unFollowAc, UsersType, UserType} from "../../redux/redusers/usersReducer";
 import Users from "./Users";
+import UsersC from "./UsersС";
 
 
 const f1 = (state: AppRooType):UsersType => {
@@ -27,6 +28,6 @@ const f2 = (dispatch:Dispatch) => {
 }
 
 
-const UsersContainer = connect(f1,f2)(Users);
+const UsersContainer = connect(f1,f2)(UsersC);
 
 export default UsersContainer
