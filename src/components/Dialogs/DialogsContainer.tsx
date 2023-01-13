@@ -35,15 +35,12 @@ import {Dispatch} from "redux";
 // }
 
 
-
 const f1 = (state: AppRooType) => {
     return {
         dialogsPage: state.dialogsPage
     }
 }
-const f2 = (dispatch:Dispatch) => {
-
-
+const f2 = (dispatch: Dispatch) => {
     return {
         addNewMessage: () => {
             dispatch(addMessageAction())
@@ -56,5 +53,5 @@ const f2 = (dispatch:Dispatch) => {
     }
 }
 
-const DialogsContainer = connect(f1,f2)(Dialogs);
+const DialogsContainer = connect(f1, f2)(Dialogs);
 export default DialogsContainer

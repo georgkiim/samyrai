@@ -13,6 +13,7 @@ import Music from "./components/music/Music";
 import {ActionType, RootStateType} from "./redux/store";
 import {AppRooType, StoreType} from "./redux/redax-store";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import Users from './components/Users/Users';
 
 // type AppProps = {
 //     // appState: AppRooType
@@ -23,25 +24,21 @@ import DialogsContainer from "./components/Dialogs/DialogsContainer";
 const App = () => {
     return (
 
-            <div className='app-wrapper'>
-                <Header/>
-                <Nav/>
-                {/*<NewPost />*/}
-                <div className='app-wrapper-content'>
-                    <Route path='/profile' render={() => <Content
-                    />}/>
-                    <Route path='/dialogs' render={() =>
-                        <DialogsContainer
-                            // store={props.store}
-
-                        />}/>
-                    <Route path='/news' render={() => <News/>}/>
-                    <Route path='/settings' render={() => <Settings/>}/>
-                    <Route path='/music' render={() => <Music/>}/>
-
-                </div>
+        <div className='app-wrapper'>
+            <Header/>
+            <Nav/>
+            {/*<NewPost />*/}
+            <div className='app-wrapper-content'>
+                <Route path='/profile' render={() => <Content/>}/>
+                <Route path='/dialogs' render={() => <DialogsContainer/>}/>
+                <Route path='/dialogs' render={() => <Users/>}/>
+                <Route path='/news' render={() => <News/>}/>
+                <Route path='/settings' render={() => <Settings/>}/>
+                <Route path='/music' render={() => <Music/>}/>
 
             </div>
+
+        </div>
 
     )
 }

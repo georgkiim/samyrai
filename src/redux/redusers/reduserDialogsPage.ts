@@ -28,18 +28,27 @@ const initialState = {
     newMessage: 'Haha'
 }
 
-export const reducerDialogsPage = (state: DialogPageType = initialState, action: ActionType) => {
+export const reducerDialogsPage = (state: DialogPageType = initialState, action: ActionType):DialogPageType => {
     switch (action.type) {
-        case "ADD-MESSAGE":
+        case "ADD-MESSAGE": {
             const newMessage: MessageType = {
                 id: v1(), message: state.newMessage
             }
-            state.messages.push(newMessage)
-            state.newMessage = ''
-            return state
-        case "NEW-MESSAGE":
-            state.newMessage = action.message
-            return state
+            const newState = {
+                ...state, messages: [...state.messages, newMessage],
+                newMessage: ''
+            }
+            return newState
+        }
+
+        case "NEW-MESSAGE": {
+            const newState = {
+                ...state, newMessage: action.message
+            }
+
+            return newState
+        }
+
         default:
             return state
     }
